@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Pos: MyString
+  Height: 1.5
+  Width: 1.5
+  Chamfer: 1.5
+
+two:
+  Pos: MyString
+  Height: 1.5
+  Width: 1.5
+  Chamfer: 1.5

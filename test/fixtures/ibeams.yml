@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 
+  Type: 
+  Assigned: false
+
+two:
+  id: 
+  Type: 
+  Assigned: false

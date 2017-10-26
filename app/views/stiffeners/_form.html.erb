@@ -1,0 +1,44 @@
+<%= form_with(model: stiffener, local: true) do |form| %>
+  <% if stiffener.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(stiffener.errors.count, "error") %> prohibited this stiffener from being saved:</h2>
+
+      <ul>
+      <% stiffener.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Pos %>
+    <%= form.text_field :Pos, id: :stiffener_Pos %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Height %>
+    <%= form.text_field :Height, id: :stiffener_Height %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Width %>
+    <%= form.text_field :Width, id: :stiffener_Width %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Chamfer %>
+    <%= form.text_field :Chamfer, id: :stiffener_Chamfer %>
+  </div>
+  
+  <%= form.fields_for :ibeams do |ibeam_fields| %>
+    <div class="field">
+      <%= ibeam_fields.label :Type, 'W-Shape' %>
+      <%= ibeam_fields.collection_select(:Type, Ibeam.asc(:_id), :Type, :Type, {:multiple=>true}) %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

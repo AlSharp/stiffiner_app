@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pos:</strong>
+  <%= @stiffener.Pos %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @stiffener.Height %>
+</p>
+
+<p>
+  <strong>Width:</strong>
+  <%= @stiffener.Width %>
+</p>
+
+<p>
+  <strong>Chamfer:</strong>
+  <%= @stiffener.Chamfer %>
+</p>
+
+<%= link_to 'Edit', edit_stiffener_path(@stiffener) %> |
+<%= link_to 'Back', stiffeners_path %>
