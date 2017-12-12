@@ -26,14 +26,12 @@ class StiffenersController < ApplicationController
   # POST /stiffeners.json
   def create
     @stiffener = Stiffener.new(stiffener_only_params)
-    puts "#{stiffener_params[:ibeams_attributes]["0"][:Type]}"
-    puts "#{@stiffener._id}"
-    @ibeam = Ibeam.where(:Type => stiffener_params[:ibeams_attributes]["0"][:Type]).update_all(:Assigned => true, :stiffener_id => @stiffener._id)
+    puts stiffener_params[:ibeams_attributes]["0"][:Type]
+    Ibeam.any_in(:_id => stiffener_params[:ibeams_attributes]["0"][:Type]).update_all(:Assigned => true, :stiffener_id => @stiffener._id)
   
-
     respond_to do |format|
       if @stiffener.save
-        format.html { redirect_to @stiffener, notice: 'Stiffener was successfully created.' }
+        format.html { redirect_to stiffeners_url, notice: 'Stiffener was successfully created.' }
         format.json { render :show, status: :created, location: @stiffener }
       else
         format.html { render :new }
@@ -59,10 +57,16 @@ class StiffenersController < ApplicationController
   # DELETE /stiffeners/1
   # DELETE /stiffeners/1.json
   def destroy
+    puts 'run'
+    Ibeam.any_in(:stiffener_id => @stiffener._id).update_all(:Assigned => false, :stiffener_id => nil)
     @stiffener.destroy
     respond_to do |format|
       format.html { redirect_to stiffeners_url, notice: 'Stiffener was successfully destroyed.' }
       format.json { head :no_content }
+    end
+    respond_to do |format|
+      format.html
+      format.json
     end
   end
 
@@ -74,7 +78,7 @@ class StiffenersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stiffener_params
-      params.require(:stiffener).permit(:id, :Pos, :Height, :Width, :Chamfer, :ibeams_attributes => [:Type, :Assigned, :stiffener_id, :_destroy])
+      params.require(:stiffener).permit(:id, :Pos, :Height, :Width, :Chamfer, :ibeams_attributes => [:_id, {:Type => []}, :_destroy])
     end
     def stiffener_only_params
       params.require(:stiffener).permit(:Pos, :Height, :Width, :Chamfer)

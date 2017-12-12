@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'jquery-rails', '~> 4.3'
+gem 'jquery-ui-rails', '~> 6.0.1'
 
 gem 'mongo', '~> 2.4.3'
 gem 'mongoid', '~> 6.2'

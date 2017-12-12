@@ -1,0 +1,36 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "jquery-ui/draggable.css";
+@import "stiffeners";
+
+
+
+body{
+    font-size: 14px;
+    color: black;
+    background: url(https://damassets.autodesk.net/content/dam/autodesk/www/products/autodesk-navisworks-family/fy18/overview/images/navisworks-manage-large-1920x1080.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    // height: calc(100vh - 100px);
+    height: calc(100vh - 52px);
+    overflow: auto;
+}
+
+.navbar-bg{
+    background-color: transparent;
+    border: 0px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+}
+
+.navbar-default .navbar-nav > .active > a{
+        background-color: transparent;
+    }
+
+
+
+.container-main-content{
+    
+}

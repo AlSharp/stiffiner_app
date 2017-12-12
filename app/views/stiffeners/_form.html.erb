@@ -1,44 +1,79 @@
-<%= form_with(model: stiffener, local: true) do |form| %>
-  <% if stiffener.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(stiffener.errors.count, "error") %> prohibited this stiffener from being saved:</h2>
-
-      <ul>
-      <% stiffener.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="form-new-stiffener">
+  <div class="form-header">
+    <h4 class="h4-page-name">New Stiffener</h3>
+  </div>
+  <div class="form-main-part" id="form-main-part-new-stiffener">
+    <%= form_with(model: stiffener, local: true, class: "form-horizontal", id: "form-create-stiffener") do |form| %>
+    
+      <div class="form-group">
+        <%= form.label :Pos, 'Position Number', class: "col-xs-7 col-sm-7 control-label", style: "text-align: left;" %>
+        <div class="col-xs-5 col-sm-5">
+          <%= form.text_field :Pos, class: "form-control", id: :stiffener_Pos, placeholder: "sv1" %>
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <%= form.label :Height, class: "col-xs-7 col-sm-7 control-label", style: "text-align: left;" %>
+        <div class="col-xs-5 col-sm-5">
+          <%= form.text_field :Height, class: "form-control", id: :stiffener_Height, placeholder: "Height, inch" %>
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <%= form.label :Width, class: "col-xs-7 col-sm-7 control-label", style: "text-align: left;" %>
+        <div class="col-xs-5 col-sm-5">
+          <%= form.text_field :Width, class: "form-control", id: :stiffener_Width, placeholder: "Width, inch" %>
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <%= form.label :Chamfer, class: "col-xs-7 col-sm-7 control-label", style: "text-align: left;" %>
+        <div class="col-xs-5 col-sm-5">
+          <%= form.text_field :Chamfer, class: "form-control", id: :stiffener_Chamfer, placeholder: "Chamfer, inch" %>
+        </div>
+      </div>
+      
+      <div class="dual-listbox">
+        <%= label_tag("dual-listbox", "Assign I-beams to the stiffener:", class: "dual-listbox-label") %>
+        <%= form.fields_for :ibeams do |ibeam_fields| %>
+          <div class="form-group">
+            <div class="col-xs-5 col-sm-5">
+              <%= select_tag :shapes, options_from_collection_for_select(Ibeam.where(:Assigned => false).asc(:_id), "_id", "Type"), {:class => "form-control", :id => "listbox1", :include_blank => false, :include_hidden => false, :multiple => true, :size => 10} %>
+            </div>
+            <div class="col-xs-2 col-sm-2 arrow-buttons">
+              <%= button_tag(:type => 'button', :id => 'btn-arrowRight', :class => 'btn btn-default') do %>
+              <%= content_tag(:span, nil, :class => 'glyphicon glyphicon-menu-right') %>
+              <% end %>
+              <br></br>
+              <%= button_tag(:type => 'button', :id => 'btn-arrowLeft', :class => 'btn btn-default') do %>
+              <%= content_tag(:span, nil, :class => 'glyphicon glyphicon-menu-left') %>
+              <% end %>
+            </div>
+            <div class="col-xs-5 col-sm-5">
+              <%= ibeam_fields.select :Type, [], {:include_blank => false, :include_hidden => false}, {:class => "form-control", :id => "listbox2", :multiple => true, :size => 10} %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      
+      <!--<% if stiffener.errors.any? %>-->
+      <!--  <div id="error_explanation">-->
+      <!--    <h2><%= pluralize(stiffener.errors.count, "error") %> prohibited this stiffener from being saved:</h2>-->
+    
+      <!--    <ul>-->
+      <!--    <% stiffener.errors.full_messages.each do |message| %>-->
+      <!--      <li><%= message %></li>-->
+      <!--    <% end %>-->
+      <!--    </ul>-->
+      <!--  </div>-->
+      <!--<% end %>-->
+      
+    <% end %>
+    <div class="actions pull-right">
+      <%= button_tag 'Create stiffiner', :type => 'button', class: "btn btn-default", id: "btn-create-stiffener" %>
+      <%= link_to 'Back', stiffeners_path, class: "btn btn-default", id: "btn-back" %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :Pos %>
-    <%= form.text_field :Pos, id: :stiffener_Pos %>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :Height %>
-    <%= form.text_field :Height, id: :stiffener_Height %>
-  </div>
 
-  <div class="field">
-    <%= form.label :Width %>
-    <%= form.text_field :Width, id: :stiffener_Width %>
-  </div>
-
-  <div class="field">
-    <%= form.label :Chamfer %>
-    <%= form.text_field :Chamfer, id: :stiffener_Chamfer %>
-  </div>
-  
-  <%= form.fields_for :ibeams do |ibeam_fields| %>
-    <div class="field">
-      <%= ibeam_fields.label :Type, 'W-Shape' %>
-      <%= ibeam_fields.collection_select(:Type, Ibeam.asc(:_id), :Type, :Type, {:multiple=>true}) %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

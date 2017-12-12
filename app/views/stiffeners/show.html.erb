@@ -1,24 +1,28 @@
-<p id="notice"><%= notice %></p>
-
-<p>
+<div class="cell-C1">
+  <p>
   <strong>Pos:</strong>
   <%= @stiffener.Pos %>
-</p>
+  </p>
+  
+  <p>
+    <strong>Height:</strong>
+    <%= @stiffener.Height %>
+  </p>
+  
+  <p>
+    <strong>Width:</strong>
+    <%= @stiffener.Width %>
+  </p>
+  
+  <p>
+    <strong>Chamfer:</strong>
+    <%= @stiffener.Chamfer %>
+  </p>
+  
+  <%= link_to 'Edit', edit_stiffener_path(@stiffener) %> |
+  <%= link_to 'Back', stiffeners_path %>
+</div>
 
-<p>
-  <strong>Height:</strong>
-  <%= @stiffener.Height %>
-</p>
-
-<p>
-  <strong>Width:</strong>
-  <%= @stiffener.Width %>
-</p>
-
-<p>
-  <strong>Chamfer:</strong>
-  <%= @stiffener.Chamfer %>
-</p>
-
-<%= link_to 'Edit', edit_stiffener_path(@stiffener) %> |
-<%= link_to 'Back', stiffeners_path %>
+<div class="cell-C2">
+  <p id="notice"><%= notice %></p>
+</div>

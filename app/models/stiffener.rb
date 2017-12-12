@@ -7,5 +7,5 @@ class Stiffener
   
   has_many :ibeams
   
-  accepts_nested_attributes_for :ibeams, :allow_destroy => false, :autosave => true, :update_only => true
+  accepts_nested_attributes_for :ibeams, :allow_destroy => false, :autosave => true
 end

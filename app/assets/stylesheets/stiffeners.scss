@@ -1,3 +1,135 @@
-// Place all the styles related to the stiffeners controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.list-of-stiffeners{
+    width: 340px;
+    height: 500px;
+    margin: auto;
+    border: 1px solid;
+    border-color: black;
+    background-color: #F0F0F0;
+}
+
+.form-new-stiffener{
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translateZ(1px) translate(-50%, -50.1%);
+    width: 340px;
+    height: 521px;
+    margin: auto;
+    border: 1px solid;
+    border-color: black;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.5), 0px 6px 20px 0px rgba(0, 0, 0, 0.3);
+}
+
+.form-header{
+    background-color: #618BD4;
+}
+
+.form-main-part{
+    float: left;
+    width: 100%;
+    background-color: #F0F0F0;
+    padding: 8px;
+    border-left: 10px solid;
+    border-bottom: 10px solid;
+    border-right: 10px solid;
+    border-color: #618BD4;
+}
+
+.h4-page-name{
+    margin: 0px 0px 0px 0px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.table-fixed{
+    width: 100%;
+    border: 1px solid;
+    thead{
+        background-color: #A0A0A0;
+        .head-row > th{
+            border-bottom: none;
+        }
+    }
+
+    tbody{
+        display: block;
+        background-color: #FFFFFF;
+        overflow-y: auto;
+        .record-row > th,
+        .record-row > td{
+            border-top: 1px solid #777;
+        }
+    }
+    thead, tbody tr{
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+}
+
+
+.dual-listbox-label{
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.arrow-buttons{
+    margin-top: 42px;
+    margin-bottom: 42px;
+    button{
+        width: 100%;
+        margin-bottom: 5px;
+        margin-left: 0%;
+        margin-right: 0%;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+#btn-arrowLeft,
+#btn-arrowRight,
+#btn-create-stiffiner,
+#btn-back,
+#btn-new,
+#listbox1,
+#listbox2,
+#stiffener_Pos,
+#stiffener_Height,
+#stiffener_Width,
+#stiffener_Chamfer{
+    border: 1px solid;
+    border-color: #ACACAC;
+}
+
+.btn-show,
+.btn-edit,
+.btn-destroy{
+    background-color: transparent;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    height: 19px;
+    padding-left: 4px;
+    padding-right: 2px;
+    border-bottom-width: 0px;
+    outline: 0;
+    -moz-outline: 0;
+}
+
+#notice{
+    margin-bottom: 0px;
+}
+
+//media queries
+
+@media (min-width: $screen-sm-min) {
+    .list-of-stiffeners{
+        width: 700px;
+    }
+    .form-new-stiffener{
+        width: 400px;
+    }
+}
